@@ -218,11 +218,12 @@ class Level extends Phaser.Scene {
 		background.scaleY = 1.05;
 
 		// informer
-		const informer = this.add.text(579, 1808, "", {});
-		informer.setStyle({"align":"center","fontSize":"100px","fontStyle":"bold"});
+		const informer = this.add.text(540, 1808, "", {});
+		informer.setOrigin(0.5, 0.5);
+		informer.setStyle({ "align": "center", "fontSize": "50px", "fontStyle": "bold" });
 
 		// board
-		this.add.image(535, 1129, "Board");
+		this.add.image(540, 1129, "Board");
 
 		// pl
 		const pl = new UserProfile(this, 132, 232);
@@ -231,6 +232,42 @@ class Level extends Phaser.Scene {
 		// pr
 		const pr = new UserProfile(this, 948, 232);
 		this.add.existing(pr);
+
+		// popup
+		const popup = this.add.container(540, 1103);
+		popup.visible = false;
+
+		// popup_img
+		const popup_img = this.add.image(0, 0, "popup");
+		popup_img.scaleX = 2.1;
+		popup_img.scaleY = 4;
+		popup.add(popup_img);
+
+		// winner_tag
+		const winner_tag = this.add.text(0, 10, "", {});
+		winner_tag.setOrigin(0.5, 0.5);
+		winner_tag.text = "Won";
+		winner_tag.setStyle({ "align": "center", "fontSize": "150px", "fontStyle": "bold" });
+		popup.add(winner_tag);
+
+		// winner_name_txt
+		const winner_name_txt = this.add.text(0, -220, "", {});
+		winner_name_txt.setOrigin(0.5, 0.5);
+		winner_name_txt.text = "Sejpalsinh";
+		winner_name_txt.setStyle({ "align": "center", "fontSize": "100px", "fontStyle": "bold" });
+		popup.add(winner_name_txt);
+
+		// exit_btn
+		const exit_btn = this.add.image(-166, 297, "exit");
+		exit_btn.scaleX = 0.3;
+		exit_btn.scaleY = 0.3;
+		popup.add(exit_btn);
+
+		// restart_btn
+		const restart_btn = this.add.image(183, 297, "restart");
+		restart_btn.scaleX = 0.3;
+		restart_btn.scaleY = 0.3;
+		popup.add(restart_btn);
 
 		this.p_0_0 = p_0_0;
 		this.p_0_1 = p_0_1;
@@ -284,6 +321,11 @@ class Level extends Phaser.Scene {
 		this.informer = informer;
 		this.pl = pl;
 		this.pr = pr;
+		this.popup = popup;
+		this.winner_tag = winner_tag;
+		this.winner_name_txt = winner_name_txt;
+		this.exit_btn = exit_btn;
+		this.restart_btn = restart_btn;
 
 		this.events.emit("scene-awake");
 	}
@@ -392,6 +434,16 @@ class Level extends Phaser.Scene {
 	pl;
 	/** @type {UserProfile} */
 	pr;
+	/** @type {Phaser.GameObjects.Container} */
+	popup;
+	/** @type {Phaser.GameObjects.Text} */
+	winner_tag;
+	/** @type {Phaser.GameObjects.Text} */
+	winner_name_txt;
+	/** @type {Phaser.GameObjects.Image} */
+	exit_btn;
+	/** @type {Phaser.GameObjects.Image} */
+	restart_btn;
 
 	/* START-USER-CODE */
 
@@ -399,8 +451,13 @@ class Level extends Phaser.Scene {
 
 	create() {
 		this.editorCreate();
-		this.pl.setPlayerUI(false, "Ghetia");
-		this.pr.setPlayerUI(true, "Jadeja");
+		this.pl.setPlayerUI(false, "Harsh");
+		this.pr.setPlayerUI(true, "Sejpalsinh");
+
+		this.aPlayers = new Array(2);
+		this.aPlayers[0] = this.pl;
+		this.aPlayers[1] = this.pr;
+
 		this.aPosPoints = new Array(7);
 		this.aPosPoints[0] = new Array(7);
 		this.aPosPoints[1] = new Array(7);
@@ -475,7 +532,17 @@ class Level extends Phaser.Scene {
 
 		this.oGridManager = new GridManager(this.aPosPoints);
 		this.nPlayerTurnNo = 1;
+
+		this.restart_btn.setInteractive().on('pointerdown', this.restartGame, this);
+
+		this.exit_btn.setInteractive().on('pointerdown', function () {
+			window.close();
+		}, this);
+
+		
+		this.setInfoMsg("Red is "+this.aPlayers[0].sPlayerName);
 		this.generateCoin();
+
 		console.log("UI Loaded!");
 	}
 
@@ -488,8 +555,10 @@ class Level extends Phaser.Scene {
 
 	checkResult(nRowNum,nColNum){
 		if(GridManager.isWon(nRowNum,nColNum,this.nPlayerTurnNo)){
-			this.setInfoMsg("Player ",this.nPlayerTurnNo," Is winner");
-			console.log("Winner winner chiken dinner");
+			this.clearPanel();
+			this.setInfoMsg(this.aPlayers[this.nPlayerTurnNo-1].sPlayerName);
+			this.winner_name_txt.text = this.aPlayers[this.nPlayerTurnNo-1].sPlayerName;
+			this.popup.visible = true;
 		}
 		else{
 			this.changePlayerTurn();
@@ -515,6 +584,22 @@ class Level extends Phaser.Scene {
 		}, nTime*1000);
 	}
 
+
+	restartGame(){
+		this.setInfoMsg("Red id ",this.aPlayers[0].sPlayerName);
+		this.clearPanel();
+		this.popup.visible = false;
+		this.generateCoin();
+	}
+
+	clearPanel()
+	{
+		for(var i=0; i<7; i++){
+			for(var j=0; j<7; j++){
+				this.aPosPoints[i][j].resetPlace();
+			}
+		}
+	}
 	/* END-USER-CODE */
 }
 

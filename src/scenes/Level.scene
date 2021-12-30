@@ -665,12 +665,12 @@
             "label": "informer",
             "scope": "CLASS",
             "components": [],
-            "x": 579,
+            "x": 540,
             "y": 1808,
-            "originX": 0,
-            "originY": 0,
+            "originX": 0.5,
+            "originY": 0.5,
             "align": "center",
-            "fontSize": "100px",
+            "fontSize": "50px",
             "fontStyle": "bold"
         },
         {
@@ -681,7 +681,7 @@
             "texture": {
                 "key": "Board"
             },
-            "x": 535,
+            "x": 540,
             "y": 1129
         },
         {
@@ -711,6 +711,85 @@
             "x": 948,
             "y": 232,
             "nestedPrefabs": []
+        },
+        {
+            "type": "Container",
+            "id": "f8e6e75f-8333-43d2-817f-d5c214bd5683",
+            "label": "popup",
+            "scope": "CLASS",
+            "components": [],
+            "x": 540,
+            "y": 1103,
+            "visible": false,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "78ba03f1-8bea-4911-9918-b9741d77f099",
+                    "label": "popup_img",
+                    "components": [],
+                    "texture": {
+                        "key": "popup"
+                    },
+                    "scaleX": 2.1,
+                    "scaleY": 4
+                },
+                {
+                    "type": "Text",
+                    "id": "4a9db47d-d8cb-47ac-8734-efb633c55630",
+                    "label": "winner_tag",
+                    "scope": "CLASS",
+                    "components": [],
+                    "y": 10,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "text": "Won",
+                    "align": "center",
+                    "fontSize": "150px",
+                    "fontStyle": "bold"
+                },
+                {
+                    "type": "Text",
+                    "id": "21040928-1362-4769-8bbc-02d35f1b3c1a",
+                    "label": "winner_name_txt",
+                    "scope": "CLASS",
+                    "components": [],
+                    "y": -220,
+                    "originX": 0.5,
+                    "originY": 0.5,
+                    "text": "Sejpalsinh",
+                    "align": "center",
+                    "fontSize": "100px",
+                    "fontStyle": "bold"
+                },
+                {
+                    "type": "Image",
+                    "id": "b61a56cd-b8bc-4b47-865c-b51bb7ab42db",
+                    "label": "exit_btn",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "exit"
+                    },
+                    "x": -166,
+                    "y": 297,
+                    "scaleX": 0.3,
+                    "scaleY": 0.3
+                },
+                {
+                    "type": "Image",
+                    "id": "93651e8c-9d00-4954-a1e5-2606d882b514",
+                    "label": "restart_btn",
+                    "scope": "CLASS",
+                    "components": [],
+                    "texture": {
+                        "key": "restart"
+                    },
+                    "x": 183,
+                    "y": 297,
+                    "scaleX": 0.3,
+                    "scaleY": 0.3
+                }
+            ]
         }
     ],
     "plainObjects": [],
@@ -718,6 +797,6 @@
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
-        "version": 2
+        "version": 3
     }
 }

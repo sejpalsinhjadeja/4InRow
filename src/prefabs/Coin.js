@@ -36,6 +36,7 @@ class Coin extends Phaser.GameObjects.Image {
 					gameObject.y = posObj.y;
 					posObj.isFilled = true;
 					posObj.playerTurnNo = this.oSceneObj.nPlayerTurnNo;
+					posObj.placedCoin = this;
 					this.oSceneObj.checkResult(7-emptySpace,nearestCol);
 				}
 				else{

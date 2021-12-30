@@ -39,10 +39,10 @@
                             "label": "textR",
                             "scope": "CLASS",
                             "components": [],
-                            "x": -60,
-                            "originX": 0,
+                            "x": -70,
+                            "originY": 0.5,
                             "text": "Harry",
-                            "fontSize": "40px",
+                            "fontSize": "35px",
                             "fontStyle": "bold",
                             "color": "#000"
                         }
@@ -72,11 +72,12 @@
                             "label": "textL",
                             "scope": "CLASS",
                             "components": [],
-                            "x": 60,
+                            "x": 75,
                             "originX": 1,
+                            "originY": 0.5,
                             "text": "Harry",
                             "align": "right",
-                            "fontSize": "40px",
+                            "fontSize": "35px",
                             "fontStyle": "bold",
                             "color": "#000"
                         }
@@ -112,6 +113,6 @@
         "app": "Phaser Editor 2D - Scene Editor",
         "url": "https://phasereditor2d.com",
         "contentType": "phasereditor2d.core.scene.SceneContentType",
-        "version": 2
+        "version": 3
     }
 }

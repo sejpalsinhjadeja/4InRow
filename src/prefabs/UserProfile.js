@@ -18,10 +18,10 @@ class UserProfile extends Phaser.GameObjects.Container {
 		rightText.add(nameR);
 
 		// textR
-		const textR = scene.add.text(-60, 0, "", {});
+		const textR = scene.add.text(-70, 0, "", {});
 		textR.setOrigin(0, 0.5);
 		textR.text = "Harry";
-		textR.setStyle({"color":"#000","fontSize":"40px","fontStyle":"bold"});
+		textR.setStyle({ "color": "#000", "fontSize": "35px", "fontStyle": "bold" });
 		rightText.add(textR);
 
 		// LeftText
@@ -34,10 +34,10 @@ class UserProfile extends Phaser.GameObjects.Container {
 		leftText.add(nameL);
 
 		// textL
-		const textL = scene.add.text(60, 0, "", {});
+		const textL = scene.add.text(75, 0, "", {});
 		textL.setOrigin(1, 0.5);
 		textL.text = "Harry";
-		textL.setStyle({"align":"right","color":"#000","fontSize":"40px","fontStyle":"bold"});
+		textL.setStyle({ "align": "right", "color": "#000", "fontSize": "35px", "fontStyle": "bold" });
 		leftText.add(textL);
 
 		// profile
@@ -84,6 +84,7 @@ class UserProfile extends Phaser.GameObjects.Container {
 			this.rightText.visible = true;
 			this.textR.text = playerName;
 		}
+		this.sPlayerName = playerName;
 	}
 	/* END-USER-CODE */
 }

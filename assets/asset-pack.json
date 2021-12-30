@@ -22,6 +22,11 @@
                 "type": "image"
             },
             {
+                "url": "assets/exit.png",
+                "type": "image",
+                "key": "exit"
+            },
+            {
                 "url": "src/scripts/GridManager.js",
                 "type": "script",
                 "key": "GridManager"
@@ -37,6 +42,11 @@
                 "key": "PlacePoint"
             },
             {
+                "url": "assets/popup.png",
+                "type": "image",
+                "key": "popup"
+            },
+            {
                 "url": "assets/Profile.png",
                 "type": "image",
                 "key": "Profile"
@@ -45,6 +55,11 @@
                 "url": "assets/Red.png",
                 "type": "image",
                 "key": "Red"
+            },
+            {
+                "url": "assets/restart.png",
+                "type": "image",
+                "key": "restart"
             },
             {
                 "url": "assets/user.png",
