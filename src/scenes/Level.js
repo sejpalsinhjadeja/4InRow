@@ -551,6 +551,7 @@ class Level extends Phaser.Scene {
 		if(this.nPlayerTurnNo == 1) { coin = new Coin(this, 537, 533, "Red"); }
 		else{ coin = new Coin(this, 537, 533, "Yellow"); }
 		this.add.existing(coin);
+		this.setInfoMsg(this.aPlayers[this.nPlayerTurnNo-1].sPlayerName+"\'s Turn");
 	}
 
 	checkResult(nRowNum,nColNum){
@@ -586,7 +587,6 @@ class Level extends Phaser.Scene {
 
 
 	restartGame(){
-		this.setInfoMsg("Red id ",this.aPlayers[0].sPlayerName);
 		this.clearPanel();
 		this.popup.visible = false;
 		this.generateCoin();
